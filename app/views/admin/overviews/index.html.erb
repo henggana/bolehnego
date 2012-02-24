@@ -1,0 +1,4 @@
+Hello, <%= current_admin.email %>(<%= current_admin.role? %>).
+
+ <%= link_to('Logout', destroy_admin_session_path, :method => :delete) %>     
+ <%= 'Super Admin' if can? :read, @userlogins %>

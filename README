@@ -1,0 +1,12 @@
+== Bolehnego
+
+== Getting Started
+
+  1. setup your database (default=postgresql), reconfigure database.yml if you use another rdbms
+  2. create database (default=bolehnego_development)
+  
+  3. $ bundle install
+  4. $ rake db:automigrate
+  5. $ rake db:seed
+  
+  6. see seed.rb for super-admin's password

@@ -1,0 +1,27 @@
+defaults: &defaults
+  adapter: postgresql
+  username: postgres
+  password: '1234'
+  host: localhost
+
+development:
+  database: bolehnego_development
+  <<: *defaults
+
+  # Add more repositories
+  # repositories:
+  #   repo1:
+  #     adapter:  postgres
+  #     database: sample_development
+  #     username: the_user
+  #     password: secrets
+  #     host:     localhost
+  #   repo2:
+  #     ...
+
+test:
+  database: bolehnego_test
+  <<: *defaults
+production:
+  database: bolehnego_production
+  <<: *defaults
