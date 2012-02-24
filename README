@@ -2,7 +2,8 @@
 
 == Getting Started
 
-  1. setup your database (default=postgresql), reconfigure database.yml if you use another rdbms
+  1. setup your database (default=postgresql), 
+     reconfigure database.yml if you use another rdbms
   2. create database (default=bolehnego_development)
   
   3. $ bundle install
