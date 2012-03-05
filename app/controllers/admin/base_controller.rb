@@ -1,6 +1,8 @@
 require 'dm-rails/middleware/identity_map'
 class Admin::BaseController < ApplicationController
   layout 'admin'
+  before_filter :authenticate_admin!
+  
   
   def current_ability
     @current_ability ||= AdminAbility.new(current_admin)

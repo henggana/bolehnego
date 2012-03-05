@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Bolehnego</title>
-  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag    "admin/grid", "admin/reset", "admin/gravity", "admin/text", "admin/style", "admin/form-style", "admin/libraries", "admin/popup" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -11,6 +11,57 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
+<%= current_admin.email %>(<%= current_admin.usertype.name %>).
+<%= link_to('Logout', destroy_admin_session_path, :method => :delete) %>  <br />
+<%= link_to 'overview', admin_overviews_path %>
+<%= link_to 'user', admin_users_path %>
+<%= link_to_if (can? :update, @users), 'add user', new_admin_user_path %>
+
+
+ <div class="left nav grid_190">
+    <ul class="parent">
+      <li><%= link_to "Summary", admin_overviews_path %></li>
+      <li class="active"><%= link_to "User", admin_users_path %>
+        <ul class="child">
+          <li><%= link_to "Add Admin", "#"%></li>
+          <li><%= link_to "Add Customer", "#"%></li>
+        </ul>
+      </li>
+      <li> <%= link_to "Product", "#"%>
+        <ul class="child">
+          <li><%= link_to "Add Product", "#"%></li>
+          <li><%= link_to "Product Category", "#"%></li>
+        </ul>
+      </li>
+      <li><%= link_to "Orders", "#"%>
+        <ul class="child">
+          <li><%= link_to "Unknown", "#"%></li>
+          <li><%= link_to "Unknown", "%"%></li>
+          <li><%= link_to "Unknown","#"%></li>
+        </ul>
+      </li>
+      <li><%= link_to "Special Offer", "#"%>
+        <ul class="child">
+          <li><%= link_to "Add Event", "#"%></li>
+          <li><%= link_to "Add Special Offer", "#"%></li>
+          <li><%= link_to "Event List", "#"%></li>
+        </ul>
+      </li>
+      <li><%= link_to "Customer Review", "#"%></li>
+      <li><%= link_to "Store", "#"%>
+        <ul class="child">
+          <li><%= link_to "Add Store", "#"%></li>
+        </ul>
+      </li>
+      <li><%= link_to "Manufacter", "#"%>
+        <ul class="child">
+          <li><%= link_to "Add Manufacter", "#"%></li>
+        </ul>
+      </li>
+      <li><%= link_to "Bolehnego.com Profile", "#"%></li>
+    </ul>
+  </div>
+  
 <%= yield %>
 
 </body>

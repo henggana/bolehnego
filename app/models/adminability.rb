@@ -2,10 +2,11 @@ class AdminAbility
   include CanCan::Ability
   
   def initialize(admin)
-    if admin.role? :super_admin
+    if admin.usertype? :super_admin
       can :manage, :all
-    elsif admin.role? :admin
-      can :manage, :all
+      can :read, Userlogin
+    elsif admin.usertype? :admin
+      can :read, :all
     end
   end
 

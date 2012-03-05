@@ -1,0 +1,20 @@
+<h2>Users</h2>
+
+<table>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+<% @users.each do |u| %>
+  <tr>
+    <td><%= u.id %></td>
+    <td><%= link_to_if (can? :delete, @user),  u.email, edit_admin_user_path(u) %></td>
+    <td><%= u.usertype.name %></td>
+    <td><%= link_to_if (can? :delete, @user), 'delete', admin_users_path(u), :method => 'delete' %></td>
+  </tr>
+<% end %>
+
+</table>

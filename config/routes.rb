@@ -1,6 +1,5 @@
 Bolehnego::Application.routes.draw do
 
-
   root :to => "welcome#index"
 
 #  devise_for :admins, :path => 'admins/', :class_name => 'Userlogin',
@@ -23,6 +22,7 @@ end
 
   namespace :admin do
     resources :overviews
+    resources :users
   end  
 
 #  root :to => 'welcome#index'

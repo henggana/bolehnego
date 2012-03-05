@@ -1,5 +1,4 @@
 class Usertype
-  
   include DataMapper::Resource
   
   property :id, Integer, :key => true, :min => 0, :max => 11

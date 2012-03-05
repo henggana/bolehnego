@@ -1,15 +1,17 @@
-<h2>Sign in</h2>
+
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Signin" %></div>
-<% end %>
+<div id="centered_wrapper" class="loginpage">  
+  <div id="centered_container" class="login_form whiteToGrey">
+    <form action="#" method="post">
+    	<%= f.email_field :email, :class => 'bigField', :onfocus => "if(this.value='Email')this.value=''", :onblur =>  "if(this.value=='')this.value='Email'", :value => "Email"%>
+    	<%= f.password_field :password, :class => "bigField", :onfocus => "if(this.value='Password')this.value=''", :onblur => "if(this.value=='')this.value='Password'", :value => "password" %>
+    	
+    	<input type="submit" class="login_button" name="login" value="Login">      
+    </form>
+  </div>
+  <div id="err_adminlogin">
+  	<p class="err_msg">Username & Password Salah</p>  
+  </div>
+</div>
+<%end%>

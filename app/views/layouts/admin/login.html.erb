@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bolehnego</title>
+  <%= stylesheet_link_tag    "admin/grid", "admin/reset", "admin/gravity", "admin/text", "admin/style", "admin/form-style", "admin/libraries", "admin/popup", %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<p class="alert"><%= alert %></p>
+
+
+<%= yield %>
+
+</body>
+</html>

@@ -53,11 +53,11 @@ class Userlogin
   # return userlogin's usertype if no paramater passes, 
   # otherwise it matches userlogin's usertype with the paramater
   
-  def role?(role=nil)
-    if role
-      return !!self.usertype.name==(role.to_s.gsub('_','-'))
-    else
-      self.usertype.name
+  def usertype?(usertype)
+    if usertype
+      self.usertype.name==(usertype.to_s.gsub('_','-'))
+#    else
+#      self.usertype.name
     end
   end
   
