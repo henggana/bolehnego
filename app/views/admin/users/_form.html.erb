@@ -1,11 +1,11 @@
 <%= form_for [:admin,@user], :url => admin_users_path do |f| %>
   <%= f.label :email %>
-  <%= f.text_field :email %><br/>
+  <%= f.text_field :email %><br/> 
   <%= f.label :password %>
   <%= f.password_field :password %><br/>
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %><br/>
   <%= f.label :usertype %>
-  <%= collection_select(:userlogin, :usertype_id, @usertypes, :id, :name, {:include_blank => '---'}) %><br />
+  <%= collection_select(:user, :usertype_id, @usertypes, :id, :show_name, {:include_blank => '---'}) %><br />
   <%= f.submit 'Save' %>
 <% end %>

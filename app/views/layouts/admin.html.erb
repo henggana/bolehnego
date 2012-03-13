@@ -3,27 +3,70 @@
 <head>
   <title>Bolehnego</title>
   <%= stylesheet_link_tag    "admin/grid", "admin/reset", "admin/gravity", "admin/text", "admin/style", "admin/form-style", "admin/libraries", "admin/popup" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application", "admin/popup", "jquery.min" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<%= notice %>
+<%= alert %>
 
-<%= current_admin.email %>(<%= current_admin.usertype.name %>).
-<%= link_to('Logout', destroy_admin_session_path, :method => :delete) %>  <br />
-<%= link_to 'overview', admin_overviews_path %>
-<%= link_to 'user', admin_users_path %>
-<%= link_to_if (can? :update, @users), 'add user', new_admin_user_path %>
 
+
+<!---Priviledges Edit Pop Up Menu-->
+
+<div id="popupContact"> 
+  <p id="contactArea">
+  <form action="#" method="get">
+  <div class="inputset">
+    <div class="input">
+      <fieldset>
+        <select>
+          <option class="saPriv" value="">Super Admin</option>
+          <option class="adminPriv" value="">Admin</option>
+          <option class="custPriv" value="">Customer</option>
+        </select>
+      </fieldset>
+    </div>
+  </div> 
+		<center><input type="submit" value="Change"	name="change-priviledges"/></center>
+  </form>
+  </p>
+</div>
+
+<div id="backgroundPopup"></div>
+
+<!---End of Pup Up Menu-->
+
+<div class="grid_990 ctr"> 
+  <!--TOPMENU & HEADER-->
+  
+  <div class="topmenu">
+    <div class="right panel"> 
+      <span class="login_info mrs">Signing as <strong><%= current_admin.email %>(<%= current_admin.usertype.name %>).</strong> | <%= link_to('Logout', destroy_admin_session_path, :method => :delete) %></span> 
+      <a href="#"> <span class="notification_unactive mrs">0</span>New Message</a> <a href="#">
+      <span class="notification_active mrs">3</span>New Orders</a>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="header">
+    <div class="search_form right">
+      <form action="#">      	
+          <input type="text" name="search" class="search" value="search product" onfocus="if(this.value == 'search product') {this.value = '';}" onblur="if(this.value==''){this.value = 'search product';}"/>        
+      </form>
+    </div>
+  </div>
+  
+  <!---> 
+  
+  <!-LEFT NAV-->  
 
  <div class="left nav grid_190">
     <ul class="parent">
       <li><%= link_to "Summary", admin_overviews_path %></li>
       <li class="active"><%= link_to "User", admin_users_path %>
         <ul class="child">
-          <li><%= link_to "Add Admin", "#"%></li>
+          <li><%= link_to_if (can? :update, @users), 'Add Admin', new_admin_user_path %></li>
           <li><%= link_to "Add Customer", "#"%></li>
         </ul>
       </li>
@@ -62,7 +105,15 @@
     </ul>
   </div>
   
-<%= yield %>
+  <!--->
+  
+  <!-CONTENT-->
+  
+  <div class="content left grid_780 ml20">  	
+  <%= yield %>
+  </div>
+  
+  <!--->
 
 </body>
 </html>

@@ -103,7 +103,7 @@
 .footer hr {
 	border:1px solid #efefef;
 }
-.topmenu .info {
+.topmenu .panel {
 	line-height:25px;
 	color:#333;
 	text-shadow:1px 1px #fff;
@@ -340,7 +340,7 @@ a.add-attr-btn:hover{
 
 /**USER-LIST**/
 .userListHeading{
-	background:url("../img/user_256.png") no-repeat left center;
+	background:url("../user_256.png") no-repeat left center;
 	padding-left:40px;	
 }
 
