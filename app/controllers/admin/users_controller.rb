@@ -25,7 +25,7 @@ class Admin::UsersController < Admin::BaseController
   
   def update
     @user = User.get(params[:id])
-    if @user.update_attributes(params[:User])
+    if @user.update_attributes(params[:user])
       redirect_to admin_users_path, :notice => '<div class="notice">User has been edited</div>'
     else
       render 'edit'
