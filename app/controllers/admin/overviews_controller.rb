@@ -2,7 +2,7 @@ class Admin::OverviewsController < Admin::BaseController
   
    
   def index
-    @userlogins = Userlogin.all
+    @users = User.all
   
   end
   

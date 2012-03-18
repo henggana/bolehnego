@@ -4,7 +4,7 @@ class AdminAbility
   def initialize(admin)
     if admin.usertype? :super_admin
       can :manage, :all
-      can :read, Userlogin
+      can :read, User
     elsif admin.usertype? :admin
       can :read, :all
     end

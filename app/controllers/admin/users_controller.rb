@@ -1,34 +1,41 @@
 class Admin::UsersController < Admin::BaseController
   def index
-    @users = Userlogin.all
+    @users = User.all
   end
   
   def new
-    @user = Userlogin.new
+    @user = User.new
     @usertypes = Usertype.all
   end
   
   def create
-    @user = Userlogin.new(params[:userlogin])
+    @usertypes = Usertype.all
+    @user = User.new(params[:user])
     if @user.save
-      redirect_to admin_users_path, :notice => 'New User has been added'
+      redirect_to admin_users_path, :notice => '<div class="notice">New User has been added</div>'
     else
       render 'new'
     end
   end
   
   def edit
-    @user = Userlogin.get(params[:id])
+    @user = User.get(params[:id])
     @usertypes = Usertype.all
   end
   
   def update
-    @user = Userlogin.get(params[:id])
-    if @user.update_attributes(params[:userlogin])
-      redirect_to admin_users_path, :notice => 'User has been edited'
+    @user = User.get(params[:id])
+    if @user.update_attributes(params[:user])
+      redirect_to admin_users_path, :notice => '<div class="notice">User has been edited</div>'
     else
       render 'edit'
     end
+  end
+  
+  def destroy
+    @user = User.get(params[:id])
+    @user.destroy
+    redirect_to admin_users_path
   end
   
 
