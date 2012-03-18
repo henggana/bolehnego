@@ -16,7 +16,7 @@ Bolehnego::Application.routes.draw do
 #  end
 
 
-devise_for :admin, :class_name => 'Userlogin', :controllers => {:sessions => 'admin/sessions'} do
+devise_for :admin, :class_name => 'User', :controllers => {:sessions => 'admin/sessions'} do
   root :to => 'admin#overviews'
 end
 

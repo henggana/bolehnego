@@ -1,6 +1,10 @@
 <%= form_for [:admin,@user] do |f| %>
   <%= f.label :email %>
-  <%= f.text_field :email %><br/> 
+  <% if @user.usertype.present? && @user.usertype.name == "admin" || "super-admin" %>  
+    <%= @user.email %>
+  <% else %>
+    <%= f.text_field :email %><br/> 
+  <% end %>
   <%= f.label :password %>
   <%= f.password_field :password %><br/>
   <%= f.label :password_confirmation %>
