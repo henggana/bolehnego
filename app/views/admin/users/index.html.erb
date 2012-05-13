@@ -1,6 +1,36 @@
 <h1 class="userListHeading">User List</h1>
 <hr />
   
+<!---Priviledges Edit Pop Up Menu-->
+
+<div id="popupContact"> 
+  <p id="contactArea">
+  
+  <%= form_tag '', :method=> 'put', :class => 'setpriv', :remote => :true do %> 
+  <div class="inputset">
+    <div class="input">
+      <fieldset>
+        <select id="user_usertype_id" name="user[usertype_id]" >
+          <option class="saPriv" value="1">Super Admin</option>
+          <option class="adminPriv" value="2">Admin</option>
+          <option class="custPriv" value="3">Customer</option>
+        </select>
+      </fieldset>
+      <p></p>
+    </div>
+    
+  </div> 
+		<center><%= submit_tag 'Change' %></center>
+	<%end%>
+  
+  </p>
+</div>
+
+<div id="backgroundPopup"></div>
+
+<!---End of Pup Up Menu-->
+  
+  
 <div class="mod table" id="product-list">
   <div class="inner">
     <table id="user-list-table" class="box-table" summary="User List">
@@ -15,9 +45,9 @@
       <tbody>
       <% @users.each do |u| %>
         <tr>
-          <td><%= u.id %></td>
-          <td><%= link_to_if (can? :delete, @user),  u.email, edit_admin_user_path(u) %></td>
-          <td><%= link_to u.usertype.name, "#", :class => "popupTrigger", :onclick => "showPopup('#{u.usertype.name}')" %></td>
+          <td class="id"><%= u.id %></td>
+          <td><%= link_to_if (can? :read, @user),  u.email, edit_admin_user_path(u) %></td>
+          <td><%= link_to u.usertype.name, "#", :class => "popupTrigger" %></td>
           <td><%= link_to_if (can? :delete, @user), 'delete', admin_user_path(u), :method => 'delete' %></td>
         </tr>
       <% end %>  
@@ -25,4 +55,3 @@
     </table>
   </div>
 </div>
-

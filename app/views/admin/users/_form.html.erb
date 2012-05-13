@@ -2,7 +2,8 @@
   <%= f.label :email %>
   <% if @user.usertype.present? && @user.usertype.name == "admin" || "super-admin" %>  
     <%= @user.email %>
-  <% else %>
+  <% end %>
+  <% unless @user.usertype.present? %>
     <%= f.text_field :email %><br/> 
   <% end %>
   <%= f.label :password %>

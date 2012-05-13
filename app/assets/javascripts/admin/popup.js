@@ -9,22 +9,25 @@
 //0 means disabled; 1 means enabled;
 var popupStatus = 0;
 
-function showPopup(priv){
+function showPopup(priv, id){
 	centerPopup();
 	setSelected(priv);
-	loadPopup();
+	loadPopup(id);
 }
 
 //loading popup with jQuery magic!
-function loadPopup(){
+function loadPopup(id){
 	//loads popup only if it is disabled
 	if(popupStatus==0){
+	  $('.setpriv').attr('action', '/admin/users/'+id+'/changepriv');
 		$("#backgroundPopup").css({
 			"opacity": "0.7"
 		});
+		
 		$("#backgroundPopup").fadeIn("fast");
 		$("#popupContact").fadeIn("fast");
 		popupStatus = 1;
+		
 	}
 }
 
@@ -50,6 +53,7 @@ function disablePopup(){
 		$("#backgroundPopup").fadeOut("slow");
 		$("#popupContact").fadeOut("slow");
 		popupStatus = 0;
+		$(".popupTrigger").removeAttr('id');
 	}
 }
 
@@ -77,6 +81,13 @@ function centerPopup(){
 
 //CONTROLLING EVENTS IN jQuery
 $(document).ready(function(){
+	//Click the trigger
+	$(".popupTrigger").click(function(){
+		$(this).attr('id', 'changed')
+		var id = $(this).parent().siblings(".id").html();
+		var priv = $(this).html();
+		showPopup(priv, id);
+	});
 
 	//Click out event!
 	$("#backgroundPopup").click(function(){

@@ -1,4 +1,6 @@
 class Admin::UsersController < Admin::BaseController
+  before_filter :load_resources
+  
   def index
     @users = User.all
   end
@@ -25,10 +27,13 @@ class Admin::UsersController < Admin::BaseController
   
   def update
     @user = User.get(params[:id])
-    if @user.update_attributes(params[:user])
-      redirect_to admin_users_path, :notice => '<div class="notice">User has been edited</div>'
-    else
-      render 'edit'
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html {redirect_to admin_users_path, :notice => '<div class="notice">User has been edited</div>'}
+        format.js
+      else
+        render 'edit'
+      end
     end
   end
   
@@ -36,6 +41,19 @@ class Admin::UsersController < Admin::BaseController
     @user = User.get(params[:id])
     @user.destroy
     redirect_to admin_users_path
+  end
+  
+  def changepriv
+    @user = User.get(params[:id])
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.js 
+      end
+    end
+  end
+  
+  def load_resources
+    @usertypes = Usertype.all
   end
   
 

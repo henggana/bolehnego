@@ -20,10 +20,16 @@ devise_for :admin, :class_name => 'User', :controllers => {:sessions => 'admin/s
   root :to => 'admin#overviews'
 end
 
+#match 'admin/users/:id/updatepriv' => 'users#updatepriv', :via => :put
+
   namespace :admin do
     resources :overviews
-    resources :users
+    resources :users do
+      put 'changepriv', :on => :member
+    end
   end  
+
+  match 'admin/users/:id/changepriv' => 'admin#users#changepriv', :via =>:put
 
 #  root :to => 'welcome#index'
     

@@ -60,7 +60,7 @@ class User
   def usertype?(usertype)
     if usertype
       self.usertype.name==(usertype.to_s.gsub('_','-'))
-#    else
+#     else
 #      self.usertype.name
     end
   end
